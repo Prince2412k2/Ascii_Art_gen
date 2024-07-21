@@ -1,16 +1,3 @@
-import subprocess
-
-
-
-        
-def dependencies():
-    dependencies = ['pygame', 'cv2', 'ffmpeg-python','import argparse','os']
-    for package in dependencies:
-        try:
-            subprocess.check_call(['pip', 'install', package])
-        except subprocess.CalledProcessError as e:
-            print(f"Error installing {package}: {e}")
-
 import argparse
 import pygame
 import cv2
@@ -24,7 +11,6 @@ class AsciiArt:
     ASCII_CHARS = " .'`^\",:;Il!i><~+_-?][}{1)(|\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
     
     def __init__(self,file_path=None,font_size=12)->None:
-        print("use '--init' to install all dependecies")
         
         if os.path.exists("./temp"):
             "/home/prince/Videos/birds.mov"
@@ -104,9 +90,6 @@ class AsciiArt:
                 if not ret:
                     break
                 frame=self.process((cv2.flip(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB), 1)),grayscale=grayscale)
-                cv2.imshow("lele",frame)
-                cv2.waitKey(1)
-                cv2.destroyAllWindows()
             else:
                 frame = self.process(cv2.imread(self.file_path),grayscale=grayscale)
             self.render(frame,grayscale)
@@ -125,12 +108,9 @@ def main()->None:
                         help='Grayscale mode')
     parser.add_argument('--font-size', type=int, default=12,
                         help='font size for text overlay (default: 12)')
-    parser.add_argument('--init', dest='init', action='store_true',default=0,
-                        help='Install all  dependencies ')
+
     args = parser.parse_args()
     
-    if args.init:
-         dependencies()
 
     file_path= args.file_path if args.file_path!=None else 0
 
