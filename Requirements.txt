@@ -1,4 +1,1 @@
-pygame
-opencv-python
-ffmpeg-python
-argparse
+opencv-python==4.11.0.86

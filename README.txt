@@ -1,1 +1,1 @@
-run ascii.py --init for the first run
+just a simple asci art generator
